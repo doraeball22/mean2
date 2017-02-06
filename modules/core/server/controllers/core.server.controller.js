@@ -61,3 +61,11 @@ exports.renderNotFound = function (req, res) {
     }
   });
 };
+
+
+// render my layout
+exports.renderMyLayout = function (req, res) {
+
+  res.render('modules/core/server/views/add-user-bank-account');
+
+};

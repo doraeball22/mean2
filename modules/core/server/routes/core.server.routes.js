@@ -12,4 +12,7 @@ module.exports = function (app) {
 
   // Define application route
   app.route('/*').get(core.renderIndex);
+
+  // test by bon my layout
+  app.route('/mylayout').get(core.renderMyLayout);
 };

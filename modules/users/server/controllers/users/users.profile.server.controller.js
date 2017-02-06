@@ -170,36 +170,41 @@ exports.me = function (req, res) {
 exports.updateBankAccount = function (req, res) {
   var user = req.users;
 
-  user.bankAccount.bankName = 'sssssssssssssssss';
-  // user.content = req.body.content;
+  user.facebook.bankAccount = req.body;
 
-  user.save(function (err) {
-    if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(user);
-    }
-  });
+  // res.send(req.body);
+  // user.save(function (err) {
+  //   if (err) {
+  //     return res.status(422).send({
+  //       // message: errorHandler.getErrorMessage(err);
+  //     });
+  //   } else {
+  //     res.json(user);
+  //   }
+  // });
 };
 
-exports.insert = function (req, res) {
-  // TODO: implement
-  var user = 'req.users';
-  // user: {
-  //   bankName: 'ddddd',
-  //   accountName: 'dddd',
-  //   accountNo: 'dddd',
-  //   branch: 'dddddd'
-  // };
-  user.collection('users').insert(user, function (err) {
-    if (err) {
-      return res.status(422).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.json(user);
-    }
-  });
+exports.about = function (req, res) {
+  res.render('modules/users/server/templates/add-user-bank-account');
+
 };
+
+// exports.insert = function (req, res) {
+//   // TODO: implement
+//   var user = 'xxxxx';
+//   // user: {
+//   //   bankName: 'ddddd',
+//   //   accountName: 'dddd',
+//   //   accountNo: 'dddd',
+//   //   branch: 'dddddd'
+//   // };
+// user.collection('users').insert(user, function (err) {
+//   if (err) {
+//     return res.status(422).send({
+//       message: errorHandler.getErrorMessage(err)
+//     });
+//   } else {
+//     res.json(user);
+//   }
+// });
+// };
