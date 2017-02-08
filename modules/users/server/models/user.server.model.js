@@ -49,6 +49,30 @@ var validateUsername = function (username) {
   );
 };
 
+
+/**
+ * BankAccount Schema
+ */
+var BankAccountSchema = new Schema({
+  bankName: {
+    type: String,
+    default: 'none'
+  },
+  accountName: {
+    type: String,
+    default: 'none'
+  },
+  accountNo: {
+    type: String,
+    default: 'none'
+  },
+  branch: {
+    type: String,
+    default: 'none'
+  }
+});
+
+
 /**
  * User Schema
  */
@@ -92,6 +116,9 @@ var UserSchema = new Schema({
     type: String,
     default: ''
   },
+  gender: {
+    type: String
+  },
   salt: {
     type: String
   },
@@ -128,6 +155,8 @@ var UserSchema = new Schema({
     type: Date
   },
 
+  bankAccount: [BankAccountSchema]
+
   // bankAccount: {
   //   bankName: 'kasikorn'
   // }
@@ -140,26 +169,26 @@ var UserSchema = new Schema({
   //   branch: String
   // }
 
-  bankAccount: {
-    type: {
-      bankName: {
-        type: String,
-        default: 'none'
-      },
-      accountName: {
-        type: String,
-        default: 'none'
-      },
-      accountNo: {
-        type: String,
-        default: 'none'
-      },
-      branch: {
-        type: String,
-        default: 'none'
-      }
-    }
-  }
+  // bankAccount: {
+  //   type: {
+  //     bankName: {
+  //       type: String,
+  //       default: 'none'
+  //     },
+  //     accountName: {
+  //       type: String,
+  //       default: 'none'
+  //     },
+  //     accountNo: {
+  //       type: String,
+  //       default: 'none'
+  //     },
+  //     branch: {
+  //       type: String,
+  //       default: 'none'
+  //     }
+  //   }
+  // }
 
   // bankAccount: {
   //   bankName: "ddddd",

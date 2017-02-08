@@ -169,14 +169,42 @@ exports.me = function (req, res) {
 
 exports.updateBankAccount = function (req, res) {
   var user = req.users;
+  console.log(req.user.username);
 
-  user.facebook.bankAccount = req.body;
+  // create a comment
+  req.user.bankAccount.push({
+    bankName: req.body.bankName,
+    accountName: req.body.accountName,
+    accountNo: req.body.accountNo,
+    branch: req.body.branch
+  });
+  var subdoc = req.user.bankAccount[0];
+  console.log(subdoc); // { _id: '501d86090d371bab2c0341c5', name: 'Liesl' }
+  subdoc.isNew; // true
+
+  req.user.save(function (err) {
+    // if (err) return handleError(err)
+    // console.log('Success!');
+
+    if (err) {
+      return res.status(422).send({
+        // message: errorHandler.getErrorMessage('error');
+      });
+    } else {
+      console.log('Success!');
+      res.redirect('/');
+    }
+  });
+
+  // user.facebook.bankAccount.bankName = req.body.bankName;
+  // console.log(req.body);
+  // user.facebook.bankAccount.push({ bankName: req.body.bankName });
 
   // res.send(req.body);
   // user.save(function (err) {
   //   if (err) {
   //     return res.status(422).send({
-  //       // message: errorHandler.getErrorMessage(err);
+  //       message: errorHandler.getErrorMessage(err);
   //     });
   //   } else {
   //     res.json(user);

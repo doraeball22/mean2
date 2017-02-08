@@ -258,3 +258,4 @@ module.exports.init = function (db) {
 
   return app;
 };
+

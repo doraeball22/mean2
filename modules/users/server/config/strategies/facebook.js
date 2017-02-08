@@ -13,7 +13,7 @@ module.exports = function (config) {
     clientID: config.facebook.clientID,
     clientSecret: config.facebook.clientSecret,
     callbackURL: config.facebook.callbackURL,
-    profileFields: ['id', 'name', 'displayName', 'emails', 'photos'],
+    profileFields: ['id', 'name', 'displayName', 'emails', 'photos', 'gender', 'age_range'],
     passReqToCallback: true
   },
     function (req, accessToken, refreshToken, profile, done) {
@@ -33,12 +33,8 @@ module.exports = function (config) {
         provider: 'facebook',
         providerIdentifierField: 'id',
         providerData: providerData,
-        bankAccount: {
-          bankName: 'zzzzzz',
-          accountName: 'zzzzzz',
-          accountNo: 'zzzzzz',
-          branch: 'zzzzzz'
-        }
+        gender: profile.gender,
+        age: profile.age_range
       };
 
       // Save the user OAuth profile
